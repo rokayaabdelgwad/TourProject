@@ -7,7 +7,7 @@ const userRouter = require('./routes/userRoutes');
 const reviewsRouter=require('./routes/reviewRouter')
 const AppError=require('./utils/appError')
 const globalErrorHandler=require('./controllers/errorControlllers')
-const viewRouter=require('./routes/viewRoutes')
+
 // express is function
 const app = express();
 app.set('view engine', 'pug')
