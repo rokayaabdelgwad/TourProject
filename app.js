@@ -8,7 +8,7 @@ const reviewsRouter=require('./routes/reviewRouter')
 const bookingRouter=require('./routes/bookingRoutes')
 const AppError=require('./utils/appError')
 const globalErrorHandler=require('./controllers/errorControlllers')
-
+const compression=require('compression')
 // express is function
 const app = express();
 app.set('view engine', 'pug')
@@ -27,12 +27,14 @@ app.use(express.json());
 
 app.use(express.static(path.join(__dirname,'public')));
 
+
 // ## middleware must contain three  argument
 app.use((req, res, next) => {
   console.log('hello from the middleware 😍');
   next();
 });
 
+app.use(compression())
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
   next();
