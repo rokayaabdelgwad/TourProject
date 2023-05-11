@@ -9,7 +9,7 @@ const bookingRouter=require('./routes/bookingRoutes')
 const AppError=require('./utils/appError')
 const globalErrorHandler=require('./controllers/errorControlllers')
 const compression=require('compression')
-// const cors=require('cors')
+const cors=require('cors')
 // express is function
 const app = express();
 app.set('view engine', 'pug')
@@ -27,9 +27,9 @@ if (process.env.NODE_ENV === 'development') {
 app.use(express.json());
 // Implement Cors
 // app.use(cors())
-// // app.use(cors({
-// //   origin:'https://www.graduation-project.com'
-// // }))
+app.use(cors({
+  origin:'https://graduation-project-2.onrender.com'
+}))
 // app.options('*',cors())
 app.use(express.static(path.join(__dirname,'public')));
 
