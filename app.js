@@ -28,7 +28,7 @@ app.use(express.json());
 // Implement Cors
 // app.use(cors())
 app.use(cors({
-  origin:'https://graduation-project-2.onrender.com'
+  origin:'https://petstore.swagger.io'
 }))
 // app.options('*',cors())
 app.use(express.static(path.join(__dirname,'public')));
