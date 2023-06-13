@@ -28,11 +28,11 @@ if (process.env.NODE_ENV === 'development') {
 
 app.use(express.json());
 // Implement Cors
-app.use(cors())
-// app.use(cors({
-//   origin:'https://www.graduation-project.com'
-// }))
-app.options('*',cors())
+// app.use(cors())
+app.use(cors({
+  origin:'https://petstore.swagger.io'
+}))
+// app.options('*',cors())
 app.use(express.static(path.join(__dirname,'public')));
 
 
