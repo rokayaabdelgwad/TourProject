@@ -10,6 +10,8 @@ const AppError=require('./utils/appError')
 const globalErrorHandler=require('./controllers/errorControlllers')
 const compression=require('compression')
 const cors=require('cors')
+require('dotenv').config();
+
 // express is function
 const app = express();
 app.set('view engine', 'pug')
@@ -59,3 +61,5 @@ app.use('/api/v1/reviews',reviewsRouter)
 app.use('/api/v1/bookings',bookingRouter)
 
 module.exports = app;
+
+

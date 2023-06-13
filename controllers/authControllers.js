@@ -50,9 +50,7 @@ exports.signup = catchAsync(async (req, res, next) => {
 
   });
 
-    const url=`${req.protocol}://${req.get('host')}/me`;
-    // await new Email(newUser,url).sendWelcome();
-      await new Email(newUser,url).sendWelcome();
+
     
   const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRES_IN,
