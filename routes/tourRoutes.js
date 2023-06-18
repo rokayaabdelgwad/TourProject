@@ -6,7 +6,8 @@ const authController = require('./../controllers/authControllers');
 const reviewRouter = require('./../routes/reviewRouter');
 const router = express.Router();
 // post /tour/235252/reviews
-
+const multer = require('multer');
+const upload = multer({ dest: 'uploads/' });
 router.use('/:tourId/reviews', reviewRouter);
 
 router
@@ -19,24 +20,32 @@ router.route('/tour-stats').get(tourController.getTourStats);
 router
   .route('/')
   .get(tourController.getAllTour)
-  .post(
-    authController.protect,
-    authController.restrictTo('admin', 'lead-guide'),
-    tourController.createTour
-  );
+
+  .post(tourController.uploadTourImages,tourController.resizeTourImages
+   ,tourController.createOne
+  ); 
+  // .post(
+  //   authController.protect,
+  //   authController.restrictTo('admin', 'lead-guide'),
+  //   tourController.createTour
+  // );
 
 router
   .route('/:id')
   .get(tourController.getTour)
-  .patch(
-    authController.protect,
-    authController.restrictTo('admin', 'lead-guide'),
-    tourController.updateTour
-  )
+  .patch(tourController.uploadTourImages,tourController.resizeTourImages,tourController.updateTour)
+  // .patch(
+  //   authController.protect,
+  //   authController.restrictTo('admin', 'lead-guide'),
+  //   tourController.updateTour
+  // )
+  // .delete(
+  //   tourController.deleteTour
+  // )
   .delete(
     authController.protect,
     authController.restrictTo('admin', 'lead-guide'),
     tourController.deleteTour
-  );
+  ).delete(tourController.deleteAllTour);
 
 module.exports = router;
