@@ -21,8 +21,7 @@ router
   .route('/')
   .get(tourController.getAllTour)
 
-  .post(tourController.uploadTourImages,tourController.resizeTourImages
-   ,tourController.createOne
+  .post(tourController.createOne
   ); 
   // .post(
   //   authController.protect,
