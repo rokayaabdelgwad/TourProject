@@ -62,6 +62,10 @@ const tourSchema = new mongoose.Schema(
       type: String,
       trim: true,
       required: true,
+    }, 
+     title: {
+      type: String,
+
     },
   },
   {
