@@ -6,11 +6,11 @@ const tourSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: [true, "A tour must have a name  "],
+      // required: [true, "A tour must have a name  "],
       unique: true,
       trim: true,
       maxlength: [40, "A tour name must have less or equle 40 characters"],
-      minlength: [10, "A tour name must have more or equle 10 characters"],
+      minlength: [5, "A tour name must have more or equle 10 characters"],
       // validate:[validator.isAlpha,'Tour name most only contain char']
     },
 
@@ -37,7 +37,7 @@ const tourSchema = new mongoose.Schema(
 
     price: {
       type: Number,
-      required: [true, "A tour must have a price"],
+      // required: [true, "A tour must have a price"],
     },
     priceDiscount: {
       type: Number,
@@ -61,9 +61,13 @@ const tourSchema = new mongoose.Schema(
     description: {
       type: String,
       trim: true,
-      required: true,
+      // required: true,
     }, 
      title: {
+      type: String,
+
+    }, 
+    governor: {
       type: String,
 
     },
