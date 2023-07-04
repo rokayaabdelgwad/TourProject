@@ -6,6 +6,7 @@ const tourRouter = require('./routes/tourRoutes');
 const userRouter = require('./routes/userRoutes');
 const reviewsRouter=require('./routes/reviewRouter')
 const bookingRouter=require('./routes/bookingRoutes')
+const PackageRouter=require('./routes/PackageRouter')
 const AppError=require('./utils/appError')
 const globalErrorHandler=require('./controllers/errorControlllers')
 const compression=require('compression')
@@ -59,7 +60,7 @@ app.use('/api/v1/tours', tourRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/reviews',reviewsRouter)
 app.use('/api/v1/bookings',bookingRouter)
-
+app.use('/api/v1/Travel Packages',PackageRouter)
 module.exports = app;
 
 
