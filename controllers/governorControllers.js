@@ -1,11 +1,10 @@
-const Package=require('./../models/packageModel')
+const Governor=require('./../models/governorModels')
 const catchAsync = require("./../utils/catchAsync");
 const factory = require("./handlerFactory");
 const AppError = require("../utils/appError");
 const multer = require("multer");
 const sharp = require("sharp");
-
-
+//////////////////////////////////////////////////////////////////////////////////////////////////
 const multerStorage = multer.memoryStorage();
 const multerFilter = (req, file, cb) => {
   if (file.mimetype.startsWith("image")) {
@@ -20,7 +19,7 @@ const upload = multer({
 });
 
 
-exports.uploadPackageImages = upload.fields([
+exports.uploadGovernorImages = upload.fields([
   {
     name: 'imageCover',
     maxCount: 1,
@@ -31,29 +30,29 @@ exports.uploadPackageImages = upload.fields([
 // upload.single('image')
 // upload.array('images',5)
 
-exports.resizePackageImages = catchAsync(async (req, res, next) => {
+exports.resizeGovernorImages = catchAsync(async (req, res, next) => {
   if (!req.files.imageCover || !req.files.images) return next();
 
   // 1) Cover image
-  req.body.imageCover = `Package-${req.params.id} cover.jpeg`;
+  req.body.imageCover = `Governor-${req.params.id} Governor.jpeg`;
   await sharp(req.files.imageCover[0].buffer)
     .resize(2000, 1333)
     .toFormat('jpeg')
     .jpeg({ quality: 90 })
 
-    .toFile(`public/img/Package${req.body.imageCover}`);
+    .toFile(`public/img/Governor${req.body.imageCover}`);
 
 
   // 2) Images
   req.body.images=[];
   await Promise.all(  req.files.images.map(async(file,i)=>{
-    const filename=`Package-${req.params.id} ${i+1}.jpeg`;
+    const filename=`Governor-${req.params.id} ${i+1}.jpeg`;
 
     await sharp(file.buffer)
     .resize(2000, 1333)
     .toFormat('jpeg')
     .jpeg({ quality: 90 })
-    .toFile(`public/img/Package/${filename}`);
+    .toFile(`public/img/Governor/${filename}`);
 
 req.body.images.push(filename)
   }))
@@ -63,11 +62,9 @@ req.body.images.push(filename)
 
   
 
-
-
-exports.deleteAllPackage = factory.deletALL(Package);
-exports.getAllPackage  = factory.getAll(Package);
-exports.getPackage  = factory.getOne(Package);
-exports.deletePackage  = factory.deletOne(Package);
-exports.updatePackage  = factory.UdateOne(Package);
-exports.createOne = factory.createOne(Package);
+exports.deleteAllGovernor= factory.deletALL(Governor);
+exports.getAllGovernor  = factory.getAll(Governor);
+exports.getGovernor  = factory.getOne(Governor);
+exports.deleteGovernor  = factory.deletOne(Governor);
+exports.updateGovernor = factory.UdateOne(Governor);
+exports.createOne = factory.createOne(Governor);

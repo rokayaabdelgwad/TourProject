@@ -66,7 +66,11 @@ const tourSchema = new mongoose.Schema(
      title: {
       type: String,
 
-    }, 
+    },about:{
+      type:String,
+      trim:true,
+
+    } ,
     governor: {
       type: String,
 

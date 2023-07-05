@@ -1,5 +1,5 @@
 const mongoose=require('mongoose');
-const userSchema=require('./schema/userSchema')
-const User=  mongoose.model('User',userSchema)
+const PackageSchema=require('./schema/packageSchema')
+const Package=  mongoose.model('User',PackageSchema)
 
-module.exports=User
+module.exports=Package
