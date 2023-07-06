@@ -55,7 +55,11 @@ app.use((req, res, next) => {
 //2) ROUTE HANDLERS
 
 // ROUTES
-
+app.get("/recommend/:userId", async (req, res) => {
+  const userId = req.params.userId;
+  const recommendations = await recommend(userId);
+  res.json(recommendations);
+});
 
 app.use('/api/v1/tours', tourRouter);
 app.use('/api/v1/users', userRouter);

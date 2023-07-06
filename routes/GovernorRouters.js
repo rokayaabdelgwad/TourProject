@@ -7,9 +7,10 @@ router
   .route('/')
   .get(GovernorController.getAllGovernor)
 
+
   .post(GovernorController.createOne)
   // .post(GovernorController.uploadGovernorImages,GovernorController.resizeGovernorImages,GovernorController.createOne)
-  
+
   .delete(GovernorController.deleteAllGovernor);  
   
   // .post(
