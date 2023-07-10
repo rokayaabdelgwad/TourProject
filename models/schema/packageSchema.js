@@ -34,6 +34,7 @@ const packageSchema = new mongoose.Schema({
     unique: true,
     trim: true
   },
+  
   about: {
     type: String
   },
@@ -121,6 +122,16 @@ const packageSchema = new mongoose.Schema({
   //   type: String,
   //   default: 'default.jpg'
   },// Array of optional tours
+  imageUrl: {
+    type: String,
+    validate: {
+      validator: function (value) {
+        // Regular expression to validate URL format
+        const urlRegex = /^(ftp|http|https):\/\/[^ "]+$/;
+        return urlRegex.test(value);
+      },
+      message: "Invalid URL format",
+    }}
 });
 
 //

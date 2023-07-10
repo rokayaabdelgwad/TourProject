@@ -23,7 +23,9 @@ router
 router
   .route('/:id')
   .get(GovernorController.getGovernor)
-  .patch(GovernorController.uploadGovernorImages,GovernorController.resizeGovernorImages,GovernorController.updateGovernor)
+  .patch(GovernorController.updateGovernor)
+  // .patch(GovernorController.uploadGovernorImages,GovernorController.resizeGovernorImages,GovernorController.updateGovernor)
+  
   .delete(GovernorController.deleteGovernor)
   // .patch(
   //   authController.protect,

@@ -19,7 +19,9 @@ router
 router
   .route('/:id')
   .get(PackageController.getPackage)
-  .patch(PackageController.uploadPackageImages,PackageController.resizePackageImages,PackageController.updatePackage)
+  .patch(PackageController.updatePackage)
+  //  .patch(PackageController.uploadPackageImages,PackageController.resizePackageImages,PackageController.updatePackage)
+  
   // .patch(
   //   authController.protect,
   //   authController.restrictTo('admin', 'lead-guide'),

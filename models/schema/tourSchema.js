@@ -72,7 +72,12 @@ const tourSchema = new mongoose.Schema(
 
     } ,
     governor: {
-      type: String,
+
+        type: String,
+        set: (value) => value.toLowerCase() // Convert name to lowercase
+      
+      
+
 
     },
   },

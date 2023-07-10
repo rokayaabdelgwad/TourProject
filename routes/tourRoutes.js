@@ -32,7 +32,10 @@ router
 router
   .route('/:id')
   .get(tourController.getTour)
-  .patch(tourController.uploadTourImages,tourController.resizeTourImages,tourController.updateTour)
+
+  .patch(tourController.updateTour)
+//  .patch(tourController.uploadTourImages,tourController.resizeTourImages,tourController.updateTour)
+
   // .patch(
   //   authController.protect,
   //   authController.restrictTo('admin', 'lead-guide'),
